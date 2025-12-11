@@ -141,7 +141,6 @@ Generation Complete.
 ```
 
 ## Authors
-
 * **Jacob Wilkin** - *Research and Development*
 
 
